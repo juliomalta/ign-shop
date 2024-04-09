@@ -4,12 +4,8 @@ import { HomeContainer, Product } from "../styles/pages/home"
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import { stripe } from "../lib/stripe"
-import { GetServerSideProps } from "next"
+import { GetStaticProps } from "next"
 
-import camiseta1 from "../assets/tshirt1.png"
-import camiseta2 from "../assets/tshirt2.png" 
-import camiseta3 from "../assets/tshirt3.png"
-import camiseta4 from "../assets/tshirt4.png"
 import Stripe from "stripe"
 
 interface HomeProps {
@@ -51,7 +47,7 @@ export default function Home({ products }: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price'] // Para receber o preço do produto e usá-lo no return de products
   })
@@ -67,16 +63,21 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
   })
 
-  console.log(response.data)
-
-
-  console.log('Tudo que estiver aqui, não será exibido no servidor cliente, apenas no servidor do Next')
-
   return {
     props: {
       products
-    }
+    },
+    revalidate: 60 * 60 * 24 // 24 horas
   }
-} // Para renderizar o conteúdo no server side (no servidor do Next), independendo do JS estar habilitado ou não. 
+} 
+// SSR (Server Side Rendering)
+// Para renderizar o conteúdo no server side (no servidor do Next), independendo do JS estar habilitado ou não. 
 // Somente incluir informações que necessariamente precisam estar renderizada instantaneamente, junto da página, para indexadores, bots ou crowlers terem acesso a essas informações.
-// Exemplos de uso: códigos de autenticação, informações sensíveis, etc.
+// Exemplos de uso: códigos de autenticação, informações sensíveis, APIS que não podem ser vistas etc.
+
+// SSG (Static Site Generation)
+// A página é gerada no momento da build, e não no momento da requisição. Por isso não recebe cookies de informação, e não é possível acessar informações (req e res) do usuário.
+// O conteúdo é (e tem que ser) estático, e não muda a cada requisição.
+// Uma vez gerada, é reutilizada em todas as solicitações subsequentes.
+// Podemos usar o revalidate para atualizar a página a cada X segundos, minutos, horas, dias etc.
+// Exemplos de uso: páginas de blog, páginas de produtos, páginas de documentação etc.
