@@ -1,9 +1,9 @@
 import Image from "next/image"
 import { HomeContainer, Product } from "../styles/pages/home"
 
-import camiseta1 from "../assets/Camiseta.jpg"
-import camiseta2 from "../assets/Camiseta.jpg"
-import camiseta3 from "../assets/Camiseta.jpg"
+import camiseta1 from "../assets/tshirt1.png"
+import camiseta2 from "../assets/Camiseta.jpg" //tirar o fundo branco
+import camiseta3 from "../assets/tshirt2.png"
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       </Product>
 
       <Product>
-        <Image src={camiseta2.src} alt="Camiseta 1" height={520} width={480} />
+        <Image src={camiseta3.src} alt="Camiseta 1" height={520} width={480} />
         <footer>
           <strong>Camiseta X</strong>
           <span>R$ 49,90</span>
