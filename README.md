@@ -4,13 +4,13 @@ Bem-vindo ao ign-shop, um projeto de e-commerce robusto e moderno, construído c
 
 Este projeto é integrado com o Stripe, uma das principais plataformas de pagamento online, garantindo uma experiência de checkout segura e eficiente para os usuários.
 
-Utilizamos técnicas avançadas de renderização e geração de sites, como Server-side Rendering (SSR) e Static Site Generation (SSG), para garantir um desempenho otimizado e uma excelente experiência do usuário.
+Utilio técnicas avançadas de renderização e geração de sites, como Server-side Rendering (SSR) e Static Site Generation (SSG), para garantir um desempenho otimizado e uma excelente experiência do usuário.
 
 O ign-shop também faz uso de data fetching, permitindo que os dados sejam buscados e renderizados no servidor antes de serem enviados para o cliente. Isso resulta em páginas que carregam rapidamente e são indexadas de forma eficaz pelos motores de busca.
 
 Além disso, este projeto segue rigorosas diretrizes de padronização de código. Isso facilita a manutenção do código, torna o código mais legível e reduz a probabilidade de erros.
 
-Estamos sempre buscando melhorar e expandir nossas funcionalidades, por isso, qualquer contribuição é bem-vinda!
+Estou sempre buscando melhorar e expandir as funcionalidades, por isso, qualquer contribuição é bem-vinda!
 
 Para começar a trabalhar com o ign-shop, consulte a seção de instalação abaixo.
 
