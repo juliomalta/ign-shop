@@ -1,9 +1,10 @@
 import { styled } from "..";
 
+// evitar espaçamento dentro do container ou do product, pra não ter conflito com o keen-slider, ele tem um espaçamento próprio
+// o keen-slider não aceita margin, padding e etc, então o espaçamento tem que ser feito no keen-slider
+
 export const HomeContainer = styled('main', {
   display: 'flex',
-  gap: '3rem',
-  backgroundColor: 'red',
   width: '100%',
   maxWidth: 'calc(100vw - ((100vw - 1180px) / 2))',
   marginLeft: 'auto',
@@ -11,18 +12,17 @@ export const HomeContainer = styled('main', {
 });
 
 export const Product = styled('a', {
-  background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%)', // as camisetas têm que ter fundo transparente
+  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)', // as camisetas têm que ter fundo transparente para aparecer o gradiente
   borderRadius: 8,
-  padding: '0.25rem',
   cursor: 'pointer',
   position: 'relative',
-  overflow: 'hidden',
+  overflow: 'hidden', // fazer com que a barra de preço fique dentro do product
 
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   img: {
-    objectFit: 'cover',
+    objectFit: 'cover', // ajustar a imagem ao tamanho do product, tem outras opções como 'contain' e 'fill'
   },
 
   footer: {
