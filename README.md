@@ -1,4 +1,4 @@
-# ign-shop: NextJS with Stripe
+# ign-shop: NextJS and Typescript with Stripe
 Bem-vindo ao ign-shop, um projeto de e-commerce robusto e moderno, construído com as melhores práticas de desenvolvimento web.
 
 Este projeto é integrado com o Stripe, uma das principais plataformas de pagamento online, garantindo uma experiência de checkout segura e eficiente para os usuários.
