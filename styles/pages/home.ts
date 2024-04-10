@@ -45,6 +45,7 @@ export const Product = styled('a', {
 
     strong: {
       fontSize: '$large',
+      color: '$gray100'
     },
 
     span: {
