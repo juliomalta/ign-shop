@@ -8,6 +8,7 @@ import { stripe } from "../lib/stripe"
 import { GetStaticProps } from "next"
 
 import Stripe from "stripe"
+import Head from "next/head"
 
 interface HomeProps {
   products: {
@@ -28,24 +29,31 @@ export default function Home({ products }: HomeProps) {
 
 
   return (
-    <HomeContainer ref={sliderRef} className="keen-slider">
-      {/* Adicionei o ref no container para que o keenSlider acesse os products dentro, lembrando de passar na className também */}
-      {products.map(product => {
-        return (
-          <Link href={`/product/${product.id}`} key={product.id} prefetch={false} >
-            <Product className="keen-slider__slide"> {/* Adicionei a className keen-slider__slide para que o keenSlider saiba que esse é um slide*/}
-              <Image src={product.imageUrl} alt="Camiseta 1" height={520} width={480} />
-              <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
-                
-              </footer>
-            </Product>
-          </Link>
-        )
-      })}
+    <>
+      <Head>
+        <title>Home | E-commerce</title>
+        
+      </Head>
 
-    </HomeContainer>
+      <HomeContainer ref={sliderRef} className="keen-slider">
+        {/* Adicionei o ref no container para que o keenSlider acesse os products dentro, lembrando de passar na className também */}
+        {products.map(product => {
+          return (
+            <Link href={`/product/${product.id}`} key={product.id} prefetch={false} >
+              <Product className="keen-slider__slide"> {/* Adicionei a className keen-slider__slide para que o keenSlider saiba que esse é um slide*/}
+                <Image src={product.imageUrl} alt="Camiseta 1" height={520} width={480} />
+                <footer>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                  
+                </footer>
+              </Product>
+            </Link>
+          )
+        })}
+
+      </HomeContainer>
+    </>
   )
 }
 

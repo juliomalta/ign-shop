@@ -4,6 +4,7 @@ import { ImageContainer, SuccessContainer } from "../styles/pages/success";
 import Stripe from "stripe";
 import { stripe } from "../lib/stripe";
 import Image from "next/image";
+import Head from "next/head";
 
 interface SuccessProps {
   customerName: string;
@@ -16,19 +17,28 @@ interface SuccessProps {
 
 export default function Success({ customerName, product}: SuccessProps) {
   return (
-    <SuccessContainer>
-      <h1>Compra realizada com sucesso!</h1>
+    <>
+      <Head>
+        <title>Compra realizada com sucesso | E-commerce</title>
 
-      <ImageContainer>
-        <Image src={product.imageUrl} alt={product.name} width={120} height={110} />
-      </ImageContainer>
+        <meta name="robots" content="noindex, nofollow" />
+        {/* O meta tag robots é para que o google não indexe essa página, pois é uma página de sucesso de compra, e não faz sentido indexar ela. */}
+      </Head>
+      
+      <SuccessContainer>
+        <h1>Compra realizada com sucesso!</h1>
 
-      <p>Uhuul <strong>{customerName}</strong>, sua <strong>{product.name}</strong> já está a caminho</p>
+        <ImageContainer>
+          <Image src={product.imageUrl} alt={product.name} width={120} height={110} />
+        </ImageContainer>
 
-      <Link href="/">
-        Voltar ao catálogo
-      </Link>
-    </SuccessContainer>
+        <p>Uhuul <strong>{customerName}</strong>, sua <strong>{product.name}</strong> já está a caminho</p>
+
+        <Link href="/">
+          Voltar ao catálogo
+        </Link>
+      </SuccessContainer>
+    </>
   )
 }
 

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useState } from "react";
+import Head from "next/head";
 
 interface ProductProps {
   product: {
@@ -46,18 +47,24 @@ export default function Product({ product }: ProductProps) {
   }
 
   return (
-    <ProductContainer>
-      <ImageContainer>
-        <Image src={product.imageUrl} alt="Product" width={520} height={520} />
-      </ImageContainer>
-      <ProductInfo>
-        <h1>{product.name}</h1>
-        <span>{product.price}</span>
-        <p>{product.description}</p>
+    <>
+      <Head>
+        <title>{product.name} | E-commerce</title>
+      </Head>
+      
+      <ProductContainer>
+        <ImageContainer>
+          <Image src={product.imageUrl} alt="Product" width={520} height={520} />
+        </ImageContainer>
+        <ProductInfo>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
+          <p>{product.description}</p>
 
-        <button disabled={isCheckoutLoading} onClick={handleBuyProduct}>Adicionar ao carrinho</button>
-      </ProductInfo>
-    </ProductContainer>
+          <button disabled={isCheckoutLoading} onClick={handleBuyProduct}>Adicionar ao carrinho</button>
+        </ProductInfo>
+      </ProductContainer>
+    </>
   )
 }
 
